@@ -1,19 +1,26 @@
 package administration.de.formules.usecases
 
+import administration.de.formules.usecases.creer.une.formule.CréerUneFormuleMensuelleCommande
+import administration.de.formules.infrastructure.FormuleHardCodedRepository
+import administration.de.formules.usecases.creer.une.formule.CréerUneFormuleMensuelle
+import administration.de.formules.usecases.creer.une.formule.FormuleMensuelleCréée
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 internal class CréerUneFormuleMensuelleTest {
     @Test
-    fun `Créer une formule mensuelle renvoie le bon événement`() {
+    fun `Je peux retrouver une formule par son identifiant`() {
         // given
-        val commande = CréerUneFormuleMensuelleCommande()
-        val usecaseTesté = CréerUneFormuleMensuelle()
+        val formuleId = "1234-567890"
+        val commande = CréerUneFormuleMensuelleCommande(formuleId)
+        val repository = FormuleHardCodedRepository()
+        val usecaseTesté = CréerUneFormuleMensuelle(repository)
+        usecaseTesté.execute(commande)
 
         //when
-        val évènement = usecaseTesté.execute(commande)
+        val formule = repository.trouverParId(formuleId)
 
         //then
-        assertThat(évènement).isEqualToComparingFieldByField(FormuleMensuelleCréée())
+        assertThat(formule.id).isEqualTo(formuleId)
     }
 }
