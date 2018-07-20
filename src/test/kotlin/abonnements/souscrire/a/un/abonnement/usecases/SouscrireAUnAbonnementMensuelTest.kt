@@ -13,9 +13,9 @@ internal class SouscrireAUnAbonnementMensuelTest {
     // TODO refacto ?
     // TODO injection des repo en se basant sur les interfaces dans SouscrireAUnAbonnementMensuel
     // TODO Utiliser les UUID dans formule, abonné aussi
-    
+
     @Test
-    fun `xxx`() {
+    fun `Je peux souscrire à un abonnement mensuel`() {
         // given
         val formuleRepository = FormuleHardCodedRepository()
         val abonnementRepository = AbonnementHardCodedRepository()
