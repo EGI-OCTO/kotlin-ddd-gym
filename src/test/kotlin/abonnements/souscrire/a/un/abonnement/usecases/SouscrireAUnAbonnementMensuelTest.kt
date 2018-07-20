@@ -2,6 +2,7 @@ package abonnements.souscrire.a.un.abonnement.usecases
 
 import abonnements.souscrire.a.un.abonnement.infrastructure.AbonnementHardCodedRepository
 import administration.de.formules.domain.Formule
+import administration.de.formules.domain.FormuleId
 import administration.de.formules.infrastructure.FormuleHardCodedRepository
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -20,8 +21,8 @@ internal class SouscrireAUnAbonnementMensuelTest {
         val formuleRepository = FormuleHardCodedRepository()
         val abonnementRepository = AbonnementHardCodedRepository()
         val usecaseTesté = SouscrireAUnAbonnementMensuel(formuleRepository, abonnementRepository)
-        val formuleId = "123-456"
-        val abonnéId = "789-1023"
+        val formuleId = FormuleId("123-456")
+        val abonnéId = AbonnéId("789-1023")
         var formule = Formule(formuleId, BigDecimal(60))
         formuleRepository.enregistrerFormule(formule)
         val commande = SouscrireAUnAbonnementMensuelCommande(formuleId, abonnéId)

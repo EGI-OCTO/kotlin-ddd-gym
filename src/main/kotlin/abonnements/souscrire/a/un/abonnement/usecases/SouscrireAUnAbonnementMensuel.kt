@@ -1,6 +1,7 @@
 package abonnements.souscrire.a.un.abonnement.usecases
 
 import abonnements.souscrire.a.un.abonnement.domain.Abonnement
+import abonnements.souscrire.a.un.abonnement.domain.AbonnementId
 import abonnements.souscrire.a.un.abonnement.infrastructure.AbonnementHardCodedRepository
 import administration.de.formules.infrastructure.FormuleHardCodedRepository
 import java.util.*
@@ -10,8 +11,8 @@ class SouscrireAUnAbonnementMensuel constructor(private val formuleRepository: F
 
         val formule = formuleRepository.trouverParId(commande.formuleId)
 
-        val abonnementId = UUID.randomUUID().toString()
-        val abonnement = Abonnement(abonnementId, formule.prix)
+        val abonnementId = AbonnementId(UUID.randomUUID().toString())
+        val abonnement = Abonnement(abonnementId, commande.abonnéId, formule.prix)
         abonnementRepository.enregistrerAbonnement(abonnement)
 
         return AbonnementMensuelSouscrit(abonnementId)

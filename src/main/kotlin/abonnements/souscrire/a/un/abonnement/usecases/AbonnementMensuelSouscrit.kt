@@ -1,3 +1,5 @@
 package abonnements.souscrire.a.un.abonnement.usecases
 
-data class AbonnementMensuelSouscrit(val abonnementId: String)
+import abonnements.souscrire.a.un.abonnement.domain.AbonnementId
+
+data class AbonnementMensuelSouscrit(val abonnementId: AbonnementId)

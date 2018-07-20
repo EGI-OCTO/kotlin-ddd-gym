@@ -1,5 +1,6 @@
 package administration.de.formules.usecases
 
+import administration.de.formules.domain.FormuleId
 import administration.de.formules.usecases.changer.le.prix.d.une.formule.ChangerLePrixDUneFormuleCommande
 import administration.de.formules.usecases.creer.une.formule.CréerUneFormuleMensuelleCommande
 import administration.de.formules.infrastructure.FormuleHardCodedRepository
@@ -13,7 +14,7 @@ internal class ChangerLePrixDeLaFormuleTest {
     @Test
     fun `Changer le prix d'une formule`() {
         // given
-        val formuleId = "1234-5678"
+        val formuleId = FormuleId("1234-5678")
         val repository = FormuleHardCodedRepository()
         val créactionCommande = CréerUneFormuleMensuelleCommande(formuleId)
         val créationFormule = CréerUneFormuleMensuelle(repository)

@@ -1,5 +1,6 @@
 package administration.de.formules.usecases
 
+import administration.de.formules.domain.FormuleId
 import administration.de.formules.usecases.creer.une.formule.CréerUneFormuleMensuelleCommande
 import administration.de.formules.infrastructure.FormuleHardCodedRepository
 import administration.de.formules.usecases.creer.une.formule.CréerUneFormuleMensuelle
@@ -11,7 +12,7 @@ internal class CréerUneFormuleMensuelleTest {
     @Test
     fun `Je peux retrouver une formule par son identifiant`() {
         // given
-        val formuleId = "1234-567890"
+        val formuleId = FormuleId("1234-567890")
         val commande = CréerUneFormuleMensuelleCommande(formuleId)
         val repository = FormuleHardCodedRepository()
         val usecaseTesté = CréerUneFormuleMensuelle(repository)
