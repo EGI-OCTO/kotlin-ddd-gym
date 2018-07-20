@@ -2,15 +2,16 @@ package abonnements.souscrire.a.un.abonnement.infrastructure
 
 import abonnements.souscrire.a.un.abonnement.domain.Abonnement
 import abonnements.souscrire.a.un.abonnement.domain.AbonnementId
+import abonnements.souscrire.a.un.abonnement.domain.AbonnementRepository
 
-class AbonnementHardCodedRepository {
+class AbonnementHardCodedRepository : AbonnementRepository {
     private val abonnements = HashMap<String, Abonnement>()
 
-    fun trouverParId(abonnementId: AbonnementId): Abonnement {
+    override fun trouverParId(abonnementId: AbonnementId): Abonnement {
         return abonnements[abonnementId.id] ?: throw AbonnementNonTrouvéException()
     }
 
-    fun enregistrerAbonnement(abonnement: Abonnement) {
+    override fun enregistrerAbonnement(abonnement: Abonnement) {
         abonnements[abonnement.id.id] = abonnement
     }
 }

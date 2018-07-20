@@ -9,11 +9,8 @@ import org.junit.jupiter.api.Test
 import java.math.BigDecimal
 
 internal class SouscrireAUnAbonnementMensuelTest {
-    // TODO nommer le test
-    // TODO tester cas non passant
-    // TODO refacto ?
     // TODO injection des repo en se basant sur les interfaces dans SouscrireAUnAbonnementMensuel
-    // TODO Utiliser les UUID dans formule, abonné aussi
+    // TODO Revoir l'utilisation des UUID (methode statiques fromUUID, idGenerators  en interface + implem UUID)
 
     @Test
     fun `Je peux souscrire à un abonnement mensuel`() {
